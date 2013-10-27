@@ -1,6 +1,8 @@
 package de.anoraganingrum.helloworld;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class HelloWorld {
 	public static void main(String[] args) {
@@ -9,34 +11,40 @@ public class HelloWorld {
 		System.out.println(clearText);
 		System.out.println(encrypt(clearText));
 		System.out.println(decrypt(encrypt(clearText)));
-		System.exit(0);
-		tellYourName();
+        tellYourName();
+        System.out.println(timeDependantGreeting());
 	}
 
 	public static void sayHello(String name) {
 		System.out.println("Hello " + name + "!");
 	}
 
-	public static void tellYourName() {
-		byte buffer[] = new byte[80];  // Zeichenpuffer
-		String input = "";
-		int read;
-		do {
-			System.out.print("Please enter your name: ");
-			try {
-				// Einlesen der Zeichen
-				read = System.in.read(buffer, 0, 80);
-				// Umwandeln des Pufferinhaltes in einen String
-				input = new String(buffer, 0, read);
-				// Ausgabe der eingelesenen Zeichen
-				System.out.print(input);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} while (!input.equals("exit" + System.getProperty("line.separator")));
-		System.out.println(
-			"Thank you very much for using this program");
-	}
+    public static void tellYourName() {
+        byte buffer[] = new byte[80];  // Zeichenpuffer
+        String input;
+        int read;
+        System.out.print("Please enter your name: ");
+        try {
+            read = System.in.read(buffer, 0, 80);
+            input = new String(buffer, 0, read - 1);
+            System.out.println("Hi " + input + "!");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String timeDependantGreeting() {
+        Calendar cal = Calendar.getInstance();
+        cal.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+        System.out.println( "Sekarang ini jam " + sdf.format(cal.getTime()) );
+
+        if (cal.getTime().getHours() < 12) {
+            return "Selamat Pagi ";
+        } else
+            return "Selamat Sore ";
+    }
 
 	public static String encrypt(String clearText) {
 		char[] characters = new char[clearText.length()];
