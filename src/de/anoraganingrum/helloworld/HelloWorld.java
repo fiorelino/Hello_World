@@ -1,6 +1,7 @@
 package de.anoraganingrum.helloworld;
 
 import de.scrum_master.crypto.CesarCipher;
+import de.scrum_master.crypto.CharacterMixer;
 import de.scrum_master.crypto.Cipher;
 import de.scrum_master.crypto.VowelRotator;
 
@@ -14,6 +15,13 @@ public class HelloWorld {
 		String clearText = "Alexander Kriegisch ÄÖÜ äöü ß éèê";
 		testCipher(new VowelRotator(), clearText);
 		testCipher(new CesarCipher(), clearText);
+		testCipher(
+			new CharacterMixer(
+				"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜäöüßáàâÁÀÂéèêÉÈÊíìîÍÌÎóòôÓÒÔúùûÚÙÛ",
+				"vjÒJßKíìaêBÙÄketûgDpOîoClxÊÚLIRfÁGÓéäuMycrAèÛÔQnbUwVÀúÉdáXâÍEZSWÈôühYzóöPàiÖHÌÎùqTFmsNÜÂò"
+			),
+			clearText
+		);
 		tellYourName();
 		System.out.println(timeDependantGreeting());
 	}
