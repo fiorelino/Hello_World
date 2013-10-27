@@ -23,7 +23,6 @@ public class VowelRotator implements Cipher{
 			characters[i++] = replacementCharacter;
 		}
 		return new String(characters);
-
 	}
 
 	@Override

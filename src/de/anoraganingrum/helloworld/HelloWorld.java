@@ -10,9 +10,8 @@ import java.util.Calendar;
 public class HelloWorld {
 	public static void main(String[] args) {
 		sayHello("master");
-		Cipher cipher = new VowelRotator();
 		String clearText = "Alexander Kriegisch ÄÖÜ äöü ß éèê";
-		testCipher(cipher, clearText);
+		testCipher(new VowelRotator(), clearText);
 		tellYourName();
 		System.out.println(timeDependantGreeting());
 	}
