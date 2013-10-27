@@ -1,0 +1,20 @@
+26.07.2013
+1. Install IntellijIDEA + Setting what to be installed
+2. Writing HelloWorld using system.print.out
+3. Editing HelloWorld with an input method using system.print.in (there was still mistake by loop)
+
+
+27.10.2013
+1. Register GITHUB at http://github.com/  (User Name: Fiorelino)
+2. Install GIT (GIT is a repository tool for working together in a project)
+3. Basis Configuration für GIT (1 Time) in console: User Name and Email Address:
+   $ git config --global user.name "John Doe"
+   $ git config --global user.email johndoe@example.com
+   See http://git-scm.com/book
+4. Differentiate between GIT and SVN
+5. Editing HelloWord Class:
+   a. Fixing tellYourName (delete loop)
+   b. Adding new Method --> timeDependantGreeting()      NOTES: Shift-F6 for Refactor rename
+   at the other side Alexander add 2 Methods (encrypt and decrypt)
+6. Updating Project (VCS Update) then there was a conflict  - choose merge and see the difference at diff
+
