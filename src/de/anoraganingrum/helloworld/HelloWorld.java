@@ -14,7 +14,15 @@ public class HelloWorld {
 		sayHello("master");
 		String clearText = "Alexander Kriegisch ÄÖÜ äöü ß éèê";
 		testCipher(new VowelRotator(), clearText);
+		testCipher(new CharacterMixer("aeioAEIOU", "eioaEIOUA"), clearText);
 		testCipher(new CesarCipher(), clearText);
+		testCipher(
+			new CharacterMixer(
+				"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+				"fghijklmnopqrstuvwxyzabcdeFGHIJKLMNOPQRSTUVWXYZABCDE"
+			),
+			clearText
+		);
 		testCipher(
 			new CharacterMixer(
 				"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜäöüßáàâÁÀÂéèêÉÈÊíìîÍÌÎóòôÓÒÔúùûÚÙÛ",
