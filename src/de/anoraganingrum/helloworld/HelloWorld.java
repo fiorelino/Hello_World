@@ -14,7 +14,7 @@ public class HelloWorld {
 		String clearText = "Alexander Kriegisch ÄÖÜ äöü ß éèê";
 		testCipher(cipher, clearText);
 		tellYourName();
-		System.out.println(timeDependantGreeting());
+		System.out.println("Selamat "+timeDependantGreeting());
 	}
 
 	public static void sayHello(String name) {
@@ -48,12 +48,14 @@ public class HelloWorld {
 	public static String timeDependantGreeting() {
 		Calendar cal = Calendar.getInstance();
 		cal.getTime();
-		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+        int hours;
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		System.out.println( "Sekarang ini jam " + sdf.format(cal.getTime()) );
-
-		if (cal.getTime().getHours() < 12) {
-			return "Selamat Pagi ";
-		} else
-			return "Selamat Sore ";
-	}
+        hours = cal.getTime().getHours() ;
+        if (hours < 5) return "Subuh";
+        if (hours < 12) return "Pagi";
+        if (hours < 16) return "Siang";
+        if (hours < 19) return "Sore";
+        return "Malam";
+    }
 }
