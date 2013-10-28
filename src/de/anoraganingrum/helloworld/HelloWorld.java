@@ -14,6 +14,7 @@ public class HelloWorld {
 		String clearText = "Alexander Kriegisch ÄÖÜ äöü ß éèê";
 		testCipher(cipher, clearText);
 		tellYourName();
+        tellTimeToMeet();
 		System.out.println("Selamat "+timeDependantGreeting());
 	}
 
@@ -45,13 +46,29 @@ public class HelloWorld {
 		}
 	}
 
-	public static String timeDependantGreeting() {
-		Calendar cal = Calendar.getInstance();
-		cal.getTime();
+    public static void tellTimeToMeet() {
+        byte buffer[] = new byte[80];  // Zeichenpuffer
+        String time;
+        int read;
+        System.out.print("Please enter time to meet me: ");
+        try {
+            read = System.in.read(buffer, 0, 80);
+            time = new String(buffer, 0, read - 1);
+            System.out.println("At " + time + " you will meet me");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String timeDependantGreeting() {
+        Calendar cal = Calendar.getInstance();
+        cal.getTime();
         int hours;
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-		System.out.println( "Sekarang ini jam " + sdf.format(cal.getTime()) );
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        System.out.println( "Sekarang ini jam " + sdf.format(cal.getTime()) );
         hours = cal.getTime().getHours() ;
+
         if (hours < 5) return "Subuh";
         if (hours < 12) return "Pagi";
         if (hours < 16) return "Siang";
