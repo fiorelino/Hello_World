@@ -23,7 +23,8 @@ public class HelloWorld {
 			clearText
 		);
 		tellYourName();
-		System.out.println(timeDependantGreeting());
+        tellTimeToMeet();
+		System.out.println("Selamat "+timeDependantGreeting());
 	}
 
 	public static void sayHello(String name) {
@@ -55,15 +56,33 @@ public class HelloWorld {
 		}
 	}
 
-	public static String timeDependantGreeting() {
-		Calendar cal = Calendar.getInstance();
-		cal.getTime();
-		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-		System.out.println( "Sekarang ini jam " + sdf.format(cal.getTime()) );
+    public static void tellTimeToMeet() {
+        byte buffer[] = new byte[80];  // Zeichenpuffer
+        String time;
+        int read;
+        System.out.print("Please enter time to meet me: ");
+        try {
+            read = System.in.read(buffer, 0, 80);
+            time = new String(buffer, 0, read - 1);
+            System.out.println("Ok At " + time + " you will meet me");
 
-		if (cal.getTime().getHours() < 12) {
-			return "Selamat Pagi ";
-		} else
-			return "Selamat Sore ";
-	}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String timeDependantGreeting() {
+        Calendar cal = Calendar.getInstance();
+        cal.getTime();
+        int hours;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        System.out.println( "Sekarang ini jam " + sdf.format(cal.getTime()) );
+        hours = cal.getTime().getHours() ;
+        if (hours < 5) return "Subuh";
+        if (hours < 12) return "Pagi";
+        if (hours < 15) return "Siang";
+        if (hours < 18) return "Sore";
+        if (hours < 23) return "Malam";
+        return "Tidur";
+    }
 }
