@@ -31,12 +31,13 @@ public class HelloWorld {
 	}
 
 	private static void testCipher(Cipher cipher, String clearText) {
+		String cipherText = cipher.encrypt(clearText);
+		String decryptedText = cipher.decrypt(cipherText);
 		System.out.printf("Testing cipher: %s%n", cipher);
 		System.out.printf("  Clear text:     %s%n", clearText);
-		String cipherText = cipher.encrypt(clearText);
 		System.out.printf("  Cipher text:    %s%n", cipherText);
-		System.out.printf("  Decrypted text: %s%n", cipher.decrypt(cipherText));
-		System.out.printf("Test result: %s%n", clearText.equals(cipher.decrypt(cipherText)));
+		System.out.printf("  Decrypted text: %s%n", decryptedText);
+		System.out.printf("Test result: %s%n", clearText.equals(decryptedText));
 	}
 
 	public static void tellYourName() {
