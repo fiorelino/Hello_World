@@ -54,7 +54,7 @@ public class HelloWorld {
         try {
             read = System.in.read(buffer, 0, 80);
             time = new String(buffer, 0, read - 1);
-            System.out.println("At " + time + " you will meet me");
+            System.out.println("Ok At " + time + " you will meet me");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,11 +68,11 @@ public class HelloWorld {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         System.out.println( "Sekarang ini jam " + sdf.format(cal.getTime()) );
         hours = cal.getTime().getHours() ;
-
         if (hours < 5) return "Subuh";
         if (hours < 12) return "Pagi";
-        if (hours < 16) return "Siang";
-        if (hours < 19) return "Sore";
-        return "Malam";
+        if (hours < 15) return "Siang";
+        if (hours < 18) return "Sore";
+        if (hours < 23) return "Malam";
+        return "Tidur";
     }
 }
