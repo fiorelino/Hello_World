@@ -34,7 +34,7 @@ public class HelloWorld {
 	private static void testCipher(Cipher cipher, String clearText) {
 		String cipherText = cipher.encrypt(clearText);
 		String decryptedText = cipher.decrypt(cipherText);
-		System.out.printf("Testing cipher: %s%n", cipher);
+		System.out.printf("Testing cipher: %s%n", cipher.getClass().getSimpleName());
 		System.out.printf("  Clear text:     %s%n", clearText);
 		System.out.printf("  Cipher text:    %s%n", cipherText);
 		System.out.printf("  Decrypted text: %s%n", decryptedText);
