@@ -12,6 +12,17 @@ import java.util.Calendar;
 public class HelloWorld {
 	public static void main(String[] args) {
 		sayHello("master");
+		testAllCiphers();
+		tellYourName();
+        tellTimeToMeet();
+		System.out.println("Selamat "+timeDependantGreeting());
+	}
+
+	public static void sayHello(String name) {
+		System.out.println("Hello " + name + "!");
+	}
+
+	private static void testAllCiphers() {
 		String clearText = "Alexander Kriegisch ÄÖÜ äöü ß éèê";
 		testCipher(new VowelRotator(), clearText);
 		testCipher(new CesarCipher(), clearText);
@@ -22,13 +33,6 @@ public class HelloWorld {
 			),
 			clearText
 		);
-		tellYourName();
-        tellTimeToMeet();
-		System.out.println("Selamat "+timeDependantGreeting());
-	}
-
-	public static void sayHello(String name) {
-		System.out.println("Hello " + name + "!");
 	}
 
 	private static void testCipher(Cipher cipher, String clearText) {
