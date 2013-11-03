@@ -24,6 +24,8 @@ public class CharacterMixer implements Cipher {
 		}
 		if (encryptionMap.size() != decryptionMap.size() || mapSize != encryptionMap.size())
 			throw new IllegalArgumentException("character mapping must be bijective");
+        if (! encryptionMap.keySet().containsAll(decryptionMap.keySet()))
+            throw new IllegalArgumentException("character sets in source and target must be identical");
 	}
 
 	@Override
