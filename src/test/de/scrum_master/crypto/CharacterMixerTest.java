@@ -28,4 +28,59 @@ public class CharacterMixerTest {
         assertEquals("kasihan deh", cipher.decrypt("k1sih1n deh"));
         assertEquals("arum 1234", cipher.decrypt("1234 arum"));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullArguments() {
+        new CharacterMixer(null, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSourceNull() {
+        new CharacterMixer(null, "bla");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testTargetNull() {
+        new CharacterMixer("bla", null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSourceEmpty() {
+        new CharacterMixer(" ", "bla");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testTargetEmpty() {
+        new CharacterMixer("bla", " ");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testEmptyArguments() {
+        new CharacterMixer(" ", " ");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testLengthArguments() {
+        new CharacterMixer("ARU", "MURA");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSourceNonBijective() {
+        new CharacterMixer("ARUA", "MURA");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNonBijectiveArguments() {
+        new CharacterMixer("ARUM", "MARA");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+         public void testTargetNonBijective() {
+        new CharacterMixer("ARUA", "MARA");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNonIdenticalArguments() {
+        new CharacterMixer("Arum", "1234");
+    }
 }
