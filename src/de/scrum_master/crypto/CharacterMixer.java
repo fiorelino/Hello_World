@@ -22,7 +22,7 @@ public class CharacterMixer implements Cipher {
 			encryptionMap.put(source.charAt(i), target.charAt(i));
 			decryptionMap.put(target.charAt(i), source.charAt(i));
 		}
-		if (encryptionMap.size() != decryptionMap.size())
+		if (encryptionMap.size() != decryptionMap.size() || mapSize != encryptionMap.size())
 			throw new IllegalArgumentException("character mapping must be bijective");
 	}
 
