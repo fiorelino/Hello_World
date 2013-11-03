@@ -1,0 +1,40 @@
+26.07.2013
+1. Install IntellijIDEA + Setting what to be installed
+2. Writing HelloWorld using system.print.out
+3. Editing HelloWorld with an input method using system.print.in (there was still mistake by loop)
+
+
+27.10.2013
+1. Register GITHUB at http://github.com/  (User Name: Fiorelino)
+2. Install GIT (GIT is a repository tool for working together in a project)
+3. Basis Configuration für GIT (1 Time) in console: User Name and Email Address:
+   $ git config --global user.name "John Doe"
+   $ git config --global user.email johndoe@example.com
+   See http://git-scm.com/book
+4. Differentiate between GIT and SVN
+5. Editing HelloWord Class:
+   a. Fixing tellYourName (delete loop)
+   b. Adding new Method --> timeDependantGreeting()      NOTES: Shift-F6 for Refactor rename
+   at the other side Alexander add 2 Methods (encrypt and decrypt)
+6. Updating Project (VCS Update) then there was a conflict  - choose merge and see the difference at diff
+
+
+03.11.2013
+1. Die Erklärung über Interface Cipher (beinhaltet 2 Methoden: encrypt und decrypt). (READ Interface nochmals!)
+   a. Die Parameter müssen identisch sein
+   b. Die dürfen keine implementation beinhalten
+
+2. Die Erklärung über VowelRotator --> Diese Method hat 2 Methoden encrypt und decrypt und hat eine Funktion
+   die Vokale umzuwandeln mit CASE - BREAK
+
+3. Die Erklärung über CesarCipher --> Diese Method hat auch 2 Methoden encrypt und decrypt und hat eine Funktion
+   die Buchstabe auf 5 position umzuwandeln ( replacementcharacter = character + OFFSET) OFFSET ist Konstanta mit Value 5
+
+4. Die Erklärung über CharacterMixer --> Die Verschlüsselung erfolgt durch beliebige Buchstabeumwadlung mit einige Voraussetzungen:
+   a.  Source oder /und Target darf nicht Null sein
+   b.  Die Lange von source oder/und Target darf nicht 0 sein
+   c.  Die Lange von source soll gleich wie die Lange von Target sein
+   d.  Die Buchstabe von source oder/und Target soll eigenartig sein (unique / kein Wiederholung)
+
+5. Die CesarCipher und VowelRotator können die Methoden CharacterMixer benutzen. (Refactor VowelRotator & CesarCipher to delegate calls to CharcterMixer)
+6. Alexander hat Klasse AplhabetRandomiser gezeigt. Diese Methode erstellt eine reihe von Buchstabe (randomize).
