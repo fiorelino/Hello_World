@@ -59,18 +59,18 @@ public class HelloWorld {
         byte buffer[] = new byte[80];
         String time;
         int read;
-        System.out.print("Please enter time to meet me: ");
-        try {
-            read = System.in.read(buffer, 0, 80);
-            time = new String(buffer, 0, read - 1);
-            System.out.println("Ok At " + time + " you will meet me");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.print("Please enter time [hh:mm] to meet me: ");
+		read = System.in.read(buffer, 0, 80);
+		time = parseTime(new String(buffer, 0, read - 1));
+		System.out.println("OK, at " + time + " you will meet me.");
     }
 
-    public static String timeDependantGreeting() {
+	private static String parseTime(String time) throws IllegalArgumentException {
+		// TODO: add parser for well-formed time strings
+		return time;
+	}
+
+	public static String timeDependantGreeting() {
         Calendar cal = Calendar.getInstance();
         cal.getTime();
         int hours;
