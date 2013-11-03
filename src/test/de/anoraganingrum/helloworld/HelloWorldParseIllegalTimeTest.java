@@ -30,7 +30,6 @@ public class HelloWorldParseIllegalTimeTest {
 				{"0:00"},
 				{"1:5"},
 				{"15:9"},
-				{"9:45"},
 				{"24:00"},
 				{"18:60"},
 				{"123:456"}
