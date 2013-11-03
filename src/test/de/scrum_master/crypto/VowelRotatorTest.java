@@ -2,7 +2,7 @@ package de.scrum_master.crypto;
 
 import org.junit.Test;
 
-import static junit.framework.Assert.*;
+import static org.junit.Assert.*;
 
 public class VowelRotatorTest {
 	private final VowelRotator cipher = new VowelRotator();
