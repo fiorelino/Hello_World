@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class HelloWorld {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		sayHello("master");
 		testAllCiphers();
 		tellYourName();
@@ -45,23 +45,18 @@ public class HelloWorld {
 		System.out.printf("Test result: %s%n", clearText.equals(decryptedText));
 	}
 
-	public static void tellYourName() {
-		byte buffer[] = new byte[80];  // Zeichenpuffer
+	public static void tellYourName() throws IOException {
+		byte buffer[] = new byte[80];
 		String input;
 		int read;
 		System.out.print("Please enter your name: ");
-		try {
-			read = System.in.read(buffer, 0, 80);
-			input = new String(buffer, 0, read - 1);
-			System.out.println("Hi " + input + "!");
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		read = System.in.read(buffer, 0, 80);
+		input = new String(buffer, 0, read - 1);
+		System.out.println("Hi " + input + "!");
 	}
 
-    public static void tellTimeToMeet() {
-        byte buffer[] = new byte[80];  // Zeichenpuffer
+    public static void tellTimeToMeet() throws IOException {
+        byte buffer[] = new byte[80];
         String time;
         int read;
         System.out.print("Please enter time to meet me: ");
