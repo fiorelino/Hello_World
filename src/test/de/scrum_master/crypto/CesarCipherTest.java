@@ -8,13 +8,13 @@ public class CesarCipherTest {
 
     @Test
     public void testEncrypt() throws Exception {
-        assertEquals(cipher.encrypt("arum"), "fwzr");
-        assertEquals(cipher.encrypt("arumÜbenZ "), "fwzrÜgjsE ");
+        assertEquals("fwzr", cipher.encrypt("arum"));
+        assertEquals("fwzr ÜgjsE", cipher.encrypt("arum ÜbenZ"));
     }
 
     @Test
     public void testDecrypt() throws Exception {
-        assertEquals(cipher.decrypt("fwzr"), "arum");
-        assertEquals(cipher.decrypt("fwzrÜgjsE "),"arumÜbenZ ");
+        assertEquals("arum", cipher.decrypt("fwzr"));
+        assertEquals("arum ÜbenZ", cipher.decrypt("fwzr ÜgjsE"));
     }
 }

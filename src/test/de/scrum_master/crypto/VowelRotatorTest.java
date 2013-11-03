@@ -9,13 +9,13 @@ public class VowelRotatorTest {
 
 	@Test
 	public void testEncrypt() throws Exception {
-		assertEquals(cipher.encrypt("Alexander"), "Elixendir");
-		assertEquals(cipher.encrypt("AEIOUXYZaeiouxyz"), "EIOUAXYZeiouaxyz");
+		assertEquals("Elixendir", cipher.encrypt("Alexander"));
+		assertEquals("EIOUAXYZeiouaxyz", cipher.encrypt("AEIOUXYZaeiouxyz"));
 	}
 
 	@Test
 	public void testDecrypt() throws Exception {
-		assertEquals(cipher.decrypt("Elixendir"), "Alexander");
-		assertEquals(cipher.decrypt("EIOUAXYZeiouaxyz"), "AEIOUXYZaeiouxyz");
+		assertEquals("Alexander", cipher.decrypt("Elixendir"));
+		assertEquals("AEIOUXYZaeiouxyz", cipher.decrypt("EIOUAXYZeiouaxyz"));
 	}
 }
