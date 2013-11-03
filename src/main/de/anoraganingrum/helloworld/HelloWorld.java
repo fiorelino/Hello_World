@@ -65,7 +65,7 @@ public class HelloWorld {
 		System.out.println("OK, at " + time + " you will meet me.");
     }
 
-	private static String parseTime(String time) throws IllegalArgumentException {
+	public static String parseTime(String time) throws IllegalArgumentException {
 		// TODO: add parser for well-formed time strings
 		return time;
 	}
