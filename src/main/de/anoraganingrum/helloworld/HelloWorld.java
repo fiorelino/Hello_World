@@ -80,7 +80,12 @@ public class HelloWorld {
 
 		String[] timeText = time.split(":");
 		String hoursText = timeText[0];
-		String minutesText = timeText[1];
+
+        if (hoursText.length() > 2)
+            throw new IllegalArgumentException("time format is '[h]h:mm' - You forget to put : ");
+
+        String minutesText = timeText[1];
+        System.out.println("hoursText: " + hoursText + " minutesText: "+minutesText);
 
 		if (minutesText.length() == 1)
 			throw new IllegalArgumentException("minutes format is 'mm'");
