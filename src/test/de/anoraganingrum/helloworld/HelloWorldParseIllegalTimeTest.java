@@ -27,7 +27,6 @@ public class HelloWorldParseIllegalTimeTest {
 				{"-01:59"},
 				{"15:-9"},
 				{"-09:-45"},
-				/*{"0:00"},*/
 				{"1:5"},
 				{"15:9"},
 				{"24:00"},

@@ -66,42 +66,6 @@ public class HelloWorld {
     }
 
 	public static String parseTime(String time) throws IllegalArgumentException {
-		// TODO: add parser for well-formed time strings
-        /* Illegal
-        {null},
-        {""},
-        {" "},
-        {"-10:00"},
-        {"-01:59"},
-        {"15:-9"},
-        {"-09:-45"},
-	    {"0:00"},----> found at legal too!!
-        {"1:5"},
-        {"15:9"},
-        {"24:00"},
-        {"18:60"},
-        {"123:456"}
-
-        Legal
-        		{ "00:00",   "00:00" },
-				{ "0:00",    "00:00" },
-				{ "04:09",   "04:09" },
-				{ "4:09",    "04:09" },
-				{ " 4:09",   "04:09" },
-				{ "4:09 ",   "04:09" },
-				{ "10:00",   "10:00" },
-				{ "12:34",   "12:34" },
-				{ " 12:34",  "12:34" },
-				{ "12:34 ",  "12:34" },
-				{ " 12:34 ", "12:34" },
-				{ "00:59",   "00:59" },
-				{ "0:59",    "00:59" },
-				{ " 0:59",   "00:59" },
-				{ "23:59",   "23:59" },
-				{ "21:25",   "21:25" },
-        **/
-
-
         if (time == null)
             throw new IllegalArgumentException("parameter must be != null!");
 
@@ -128,9 +92,6 @@ public class HelloWorld {
         int minutes = Integer.parseInt(minutesText);
         int hoursLength = Integer.toString(hours).length();
 
-        System.out.println("hours: " + hours);
-        System.out.println("minutes: " + minutes);
-
         if (hours != Math.abs(hours) || minutes != Math.abs(minutes))
             throw new IllegalArgumentException("illegal - character");
 
@@ -142,11 +103,6 @@ public class HelloWorld {
             throw new IllegalArgumentException("hours must be < 24");
         if (minutes >= 60)
             throw new IllegalArgumentException("minutes must be < 60");
-
-        System.out.println("Test of the Format of " + time);
-        System.out.println("hoursText: " + hoursText);
-        System.out.println("minutesText: " + minutesText);
-
 
         return time;
 	}
