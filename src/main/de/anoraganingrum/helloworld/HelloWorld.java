@@ -67,44 +67,40 @@ public class HelloWorld {
 
 	public static String parseTime(String time) throws IllegalArgumentException {
 		if (time == null)
-			throw new IllegalArgumentException("parameter must be != null!");
+			throw new IllegalArgumentException("time must be != null");
 
 		time = time.trim();
 		int timeLength = time.length();
 
 		if (timeLength == 0)
-			throw new IllegalArgumentException("parameter must not be empty!");
+			throw new IllegalArgumentException("time must not be empty");
 
-		if (timeLength < 4)
-			throw new IllegalArgumentException("parameter should have format hh:mm");
-
-		if (timeLength > 5)
-			throw new IllegalArgumentException("parameter should have format hh:mm");
+		if (timeLength < 4 || timeLength > 5)
+			throw new IllegalArgumentException("time format is '[h]h:mm'");
 
 		String[] timeText = time.split(":");
 		String hoursText = timeText[0];
 		String minutesText = timeText[1];
 
 		if (minutesText.length() == 1)
-			throw new IllegalArgumentException("minutes-parameter should have format mm");
+			throw new IllegalArgumentException("minutes format is 'mm'");
 
 		int hours = Integer.parseInt(hoursText);
 		int minutes = Integer.parseInt(minutesText);
 		int hoursLength = Integer.toString(hours).length();
 
-		if (hours != Math.abs(hours) || minutes != Math.abs(minutes))
-			throw new IllegalArgumentException("illegal - character");
+		if (hours < 0 || minutes < 0)
+			throw new IllegalArgumentException("hours/minutes must be >= 0");
 
 		if (hoursLength == 1)
 			hoursText = "0" + Integer.toString(hours);
 
-		time = hoursText + ":" + minutesText;
 		if (hours >= 24)
 			throw new IllegalArgumentException("hours must be < 24");
 		if (minutes >= 60)
 			throw new IllegalArgumentException("minutes must be < 60");
 
-		return time;
+		return hoursText + ":" + minutesText;
 	}
 
 	public static String timeDependantGreeting() {
