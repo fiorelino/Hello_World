@@ -89,20 +89,24 @@ public class HelloWorld {
 		if (minutesText.length() == 1)
 			throw new IllegalArgumentException("minutes format is 'mm'");
 
+		try {
 		int hours = Integer.parseInt(hoursText);
 		int minutes = Integer.parseInt(minutesText);
-		int hoursLength = Integer.toString(hours).length();
+			int hoursLength = Integer.toString(hours).length();
 
-		if (hours < 0 || minutes < 0)
-			throw new IllegalArgumentException("hours/minutes must be >= 0");
+			if (hours < 0 || minutes < 0)
+				throw new IllegalArgumentException("hours/minutes must be >= 0");
 
-		if (hoursLength == 1)
-			hoursText = "0" + Integer.toString(hours);
+			if (hoursLength == 1)
+				hoursText = "0" + Integer.toString(hours);
 
-		if (hours >= 24)
-			throw new IllegalArgumentException("hours must be < 24");
-		if (minutes >= 60)
-			throw new IllegalArgumentException("minutes must be < 60");
+			if (hours >= 24)
+				throw new IllegalArgumentException("hours must be < 24");
+			if (minutes >= 60)
+				throw new IllegalArgumentException("minutes must be < 60");
+
+		} catch (NumberFormatException e)  {
+			throw new IllegalArgumentException("you should input numbers!");  }
 
 		return hoursText + ":" + minutesText;
 	}
