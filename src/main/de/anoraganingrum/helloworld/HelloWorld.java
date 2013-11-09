@@ -6,11 +6,13 @@ import de.scrum_master.crypto.Cipher;
 import de.scrum_master.crypto.VowelRotator;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class HelloWorld {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ParseException {
 		sayHello("master");
 		testAllCiphers();
 		tellYourName();
@@ -55,7 +57,7 @@ public class HelloWorld {
 		System.out.println("Hi " + input + "!");
 	}
 
-	public static void tellTimeToMeet() throws IOException {
+	public static void tellTimeToMeet() throws IOException, ParseException {
 		byte buffer[] = new byte[80];
 		String time;
 		int read;
@@ -65,50 +67,16 @@ public class HelloWorld {
 		System.out.println("OK, at " + time + " you will meet me.");
 	}
 
-	public static String parseTime(String time) throws IllegalArgumentException {
+	public static String parseTime(String time) throws ParseException {
 		if (time == null)
-			throw new IllegalArgumentException("time must be != null");
-
+			throw new ParseException("Unparseable date: null", 0);
 		time = time.trim();
-		int timeLength = time.length();
-
-		if (timeLength == 0)
-			throw new IllegalArgumentException("time must not be empty");
-
-		if (timeLength < 4 || timeLength > 5)
-			throw new IllegalArgumentException("time format is '[h]h:mm'");
-
-		String[] timeText = time.split(":");
-		String hoursText = timeText[0];
-
-		if (hoursText.length() > 2)
-			throw new IllegalArgumentException("time format is '[h]h:mm' - You forget to put : ");
-
-		String minutesText = timeText[1];
-
-		if (minutesText.length() == 1)
-			throw new IllegalArgumentException("minutes format is 'mm'");
-
-		try {
-		int hours = Integer.parseInt(hoursText);
-		int minutes = Integer.parseInt(minutesText);
-			int hoursLength = Integer.toString(hours).length();
-
-			if (hours < 0 || minutes < 0)
-				throw new IllegalArgumentException("hours/minutes must be >= 0");
-
-			if (hoursLength == 1)
-				hoursText = "0" + Integer.toString(hours);
-
-			if (hours >= 24)
-				throw new IllegalArgumentException("hours must be < 24");
-			if (minutes >= 60)
-				throw new IllegalArgumentException("minutes must be < 60");
-
-		} catch (NumberFormatException e)  {
-			throw new IllegalArgumentException("you should input numbers!");  }
-
-		return hoursText + ":" + minutesText;
+		if (!time.matches("[0-9][0-9]?:[0-9][0-9]"))
+			throw new ParseException("Unparseable date: \"" + time + "\"", 0);
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+		timeFormat.setLenient(false);
+		Date parsedTime = timeFormat.parse(time);
+		return timeFormat.format(parsedTime);
 	}
 
 	public static String timeDependantGreeting() {

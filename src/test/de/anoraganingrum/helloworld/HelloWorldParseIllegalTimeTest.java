@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.text.ParseException;
 import java.util.Arrays;
 
 import static org.junit.runners.Parameterized.Parameters;
@@ -40,7 +41,7 @@ public class HelloWorldParseIllegalTimeTest {
 		);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ParseException.class)
 	public void testParseIllegalTime() throws Exception {
 		HelloWorld.parseTime(input);
 	}
