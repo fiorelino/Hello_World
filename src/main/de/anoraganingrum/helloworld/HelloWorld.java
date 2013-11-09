@@ -15,7 +15,6 @@ public class HelloWorld {
 		testAllCiphers();
 		tellYourName();
 		tellTimeToMeet();
-		System.out.println("Selamat " + timeDependantGreeting());
 	}
 
 	public static void sayHello(String name) {
@@ -62,7 +61,7 @@ public class HelloWorld {
 		System.out.print("Please enter time [hh:mm] to meet me: ");
 		read = System.in.read(buffer, 0, 80);
 		time = parseTime(new String(buffer, 0, read - 1));
-		System.out.println("OK, at " + time + " you will meet me.");
+		System.out.println("OK, at " + time + " " + timeDependantGreeting(time) + " you will meet me.");
 	}
 
 	public static String parseTime(String time) throws IllegalArgumentException {
@@ -111,13 +110,8 @@ public class HelloWorld {
 		return hoursText + ":" + minutesText;
 	}
 
-	public static String timeDependantGreeting() {
-		Calendar cal = Calendar.getInstance();
-		cal.getTime();
-		int hours;
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-		System.out.println("Sekarang ini jam " + sdf.format(cal.getTime()));
-		hours = cal.getTime().getHours();
+	public static String timeDependantGreeting(String time) {
+		int hours = Integer.parseInt(time.split(":")[0]);
 		if (hours < 5) return "Subuh";
 		if (hours < 12) return "Pagi";
 		if (hours < 15) return "Siang";
