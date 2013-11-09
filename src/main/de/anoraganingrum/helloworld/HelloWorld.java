@@ -8,16 +8,17 @@ import de.scrum_master.crypto.VowelRotator;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class HelloWorld {
+	static final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+
 	public static void main(String[] args) throws IOException, ParseException {
 		sayHello("master");
 		testAllCiphers();
 		tellYourName();
 		tellTimeToMeet();
-		System.out.println("Selamat " + timeDependantGreeting());
 	}
 
 	public static void sayHello(String name) {
@@ -59,33 +60,27 @@ public class HelloWorld {
 
 	public static void tellTimeToMeet() throws IOException, ParseException {
 		byte buffer[] = new byte[80];
-		String time;
+		Date time;
 		int read;
 		System.out.print("Please enter time [hh:mm] to meet me: ");
 		read = System.in.read(buffer, 0, 80);
 		time = parseTime(new String(buffer, 0, read - 1));
-		System.out.println("OK, at " + time + " you will meet me.");
+		String greeting = timeDependantGreeting(time);
+		System.out.println("OK, at " + timeFormat.format(time) + " " + greeting + " you will meet me.");
 	}
 
-	public static String parseTime(String time) throws ParseException {
+	public static Date parseTime(String time) throws ParseException {
 		if (time == null)
 			throw new ParseException("Unparseable date: null", 0);
 		time = time.trim();
 		if (!time.matches("[0-9][0-9]?:[0-9][0-9]"))
 			throw new ParseException("Unparseable date: \"" + time + "\"", 0);
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
 		timeFormat.setLenient(false);
-		Date parsedTime = timeFormat.parse(time);
-		return timeFormat.format(parsedTime);
+		return timeFormat.parse(time);
 	}
 
-	public static String timeDependantGreeting() {
-		Calendar cal = Calendar.getInstance();
-		cal.getTime();
-		int hours;
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-		System.out.println("Sekarang ini jam " + sdf.format(cal.getTime()));
-		hours = cal.getTime().getHours();
+	public static String timeDependantGreeting(Date time) throws ParseException {
+		int hours = time.getHours();
 		if (hours < 5) return "Subuh";
 		if (hours < 12) return "Pagi";
 		if (hours < 15) return "Siang";
