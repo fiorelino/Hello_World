@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class HelloWorld {
 	static final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
